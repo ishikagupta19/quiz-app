@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import './Question.css';
+import { Button } from "@mui/material";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Question = ({
         currQues,
@@ -11,7 +13,6 @@ const Question = ({
         correct,
         score,
         setScore,
-        setQuestions,
             
 })=>{
 
@@ -23,7 +24,7 @@ const Question = ({
             return "select";
         }
         else if(selected===i && selected!==correct){
-            return "Wrong!";
+            return "wrong";
         }
         else if(i===correct){
             return "select";
@@ -35,6 +36,26 @@ const Question = ({
         if(i===correct) setScore(score+1);
         setError(false);
     };
+
+    const Navigate = useNavigate();
+
+    const handleNext = () =>{
+       if(currQues > 8) {
+        Navigate('/result');
+       }
+       else if(selected){
+        setCurrQues(currQues + 1);
+        setSelected();
+       } else{
+        setError("Please select an option first");
+       }
+    };
+
+    const handleSubmit =() =>{
+
+    }
+
+
 
   return (
     <div className='question'>
@@ -58,6 +79,26 @@ const Question = ({
                     )
                 )}
 
+        </div>
+        <div className='controls'>
+            <Button
+            variant='contained'
+            color='secondary'
+            size='large'
+            style={{width: 185}}
+            href="/"
+            onClick={handleSubmit}
+            >
+            Submit</Button>
+            <Button
+            variant='contained'
+            color='primary'
+            size='large'
+            style={{width: 185}}
+            href="/"
+            onClick={handleNext}
+            >
+            Next Question</Button>
         </div>
     </div>
     </div>
