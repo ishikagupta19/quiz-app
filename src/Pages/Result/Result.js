@@ -1,23 +1,24 @@
-import { Button } from 'bootstrap';
-import React, {useEffect} from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material'
+import React from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Result.css";
 
 const Result = ({name, score}) => {
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(!name){
-      Navigate('/');
+      navigate('/');
     }
     
-  }, [name, Navigate]);
+  }, [name, navigate]);
   
 
   return (
     <div className='result'>
-      <span className='title'> Final Score: {score}</span>
+      <span className='title'> Final Score : {score}</span>
       <Button
       variant="contained"
       color="secondary"

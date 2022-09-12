@@ -16,7 +16,7 @@ const Quiz = ({name, score, questions, setQuestions, setScore}) => {
         questions[currQues]?.correct_answer,
         ...questions[currQues]?.incorrect_answers
     ]))
-  }, [questions]);
+  }, [questions, currQues]);
   
 
 

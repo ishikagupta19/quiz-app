@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import './Question.css';
 import { Button } from "@mui/material";
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 const Question = ({
         currQues,
@@ -33,15 +33,15 @@ const Question = ({
 
     const handleCheck =(i) => {
         setSelected(i);
-        if(i===correct) setScore(score+1);
+        if(i===correct) setScore(score + 1);
         setError(false);
     };
 
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleNext = () =>{
        if(currQues > 8) {
-        Navigate('/result');
+        navigate('/result');
        }
        else if(selected){
         setCurrQues(currQues + 1);
@@ -52,7 +52,12 @@ const Question = ({
     };
 
     const handleSubmit =() =>{
-
+        if(currQues > 8) {
+            navigate('/result');
+           }
+            else{
+            setError("Attempt all the 10 questions!");
+           }
     }
 
 
@@ -86,7 +91,6 @@ const Question = ({
             color='secondary'
             size='large'
             style={{width: 185}}
-            href="/"
             onClick={handleSubmit}
             >
             Submit</Button>
@@ -95,7 +99,6 @@ const Question = ({
             color='primary'
             size='large'
             style={{width: 185}}
-            href="/"
             onClick={handleNext}
             >
             Next Question</Button>
