@@ -33,8 +33,10 @@ const Question = ({
 
     const handleCheck =(i) => {
         setSelected(i);
-        if(i===correct) setScore(score + 1);
+        if(i===correct) 
+        setScore(score + 1);
         setError(false);
+    
     };
 
     const navigate = useNavigate();

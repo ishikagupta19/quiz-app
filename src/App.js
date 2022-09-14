@@ -7,7 +7,12 @@ import "./App.css";
 import Quiz from "./Pages/Quiz/Quiz";
 import Result from "./Pages/Result/Result";
 import { useState } from "react";
+import Navbar from "../src/components/Navbar/Navbar";
 import axios from "axios";
+
+import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
+
 
 function App() {
   const [name, setName] = useState("");
@@ -26,9 +31,14 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App" style={{ backgroundImage: "url(./bg.jpg)" }}>
+      <Navbar/>
         <Header />
-
+        <br/>
         <Routes>
+
+        <Route path="/login"  element = {<Login />} />
+        <Route path="/signup"  element = {<Signup />} />
+
           <Route
             exact
             path="/"
@@ -40,6 +50,8 @@ function App() {
               />
             }
           />
+
+          
 
           <Route
             path="/quiz"

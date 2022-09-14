@@ -1,0 +1,14 @@
+.nav-item {
+    font-family: 'Jost', sans-serif;
+    letter-spacing: 2px;
+    font-weight: bolder;
+  }
+  .navbar{
+    background-color: rgba(213, 245, 255, 0.232);
+    
+  }
+  
+  .navbar-collapse{
+    padding-left: 10px;
+  }
+  
